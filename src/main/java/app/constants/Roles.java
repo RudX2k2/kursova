@@ -1,4 +1,4 @@
-package app.constant;
+package app.constants;
 
 public class Roles {
     public static final String Admin="admin";
