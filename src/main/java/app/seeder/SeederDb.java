@@ -32,25 +32,27 @@ public class SeederDb {
     }
 
     public void SeedRoles(){
-        if(roleRepository.count() == 0){
+        if(roleRepository.count()==0) {
             Role role = new Role();
             role.setName(Roles.Admin);
             roleRepository.save(role);
 
+            role = new Role();
             role.setName(Roles.User);
             roleRepository.save(role);
         }
     }
 
     public void SeedUsers(){
-        if(userRepository.count() == 0) {
+        if(userRepository.count()==0) {
             User admin = new User();
-            admin.setName("Jotaro");
-            admin.setRoles(Arrays.asList(roleRepository.findByName(Roles.Admin)));
-            userRepository.save(admin);
-            admin.setEmail("admin@gmail.com");
-            admin.setPassword(passwordEncoder.encode("12345"));
             admin.setBalance(999999.999);
+            admin.setEmail("admin@gmail.com");
+            admin.setName("Jotaro");
+            admin.setPassword(/*passwordEncoder.encode(*/"12345");
+            admin.setRoles(Arrays.asList(
+                    roleRepository.findByName(Roles.Admin)));
+
             userRepository.save(admin);
         }
     }

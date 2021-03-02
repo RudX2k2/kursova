@@ -28,7 +28,7 @@ public class User {
 
     @Column()
     @ColumnDefault("0")
-    @NotBlank(message = "Баланс обов'язкове")
+    @NotBlank(message = "Баланс обов'язковий")
     private Double balance;
 
     @ManyToMany(cascade=CascadeType.MERGE)
