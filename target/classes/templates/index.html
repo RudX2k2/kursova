@@ -2,38 +2,47 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Hi from index</h1>
-        <div th:switch="${users}">
-        <h2 th:case="null">No users yet!</h2>
-        <div th:case="*">
-            <h2>Users</h2>
-            <table>
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="user : ${users}">
-                    <td th:text="${user.name}"></td>
-                    <td th:text="${user.email}"></td>
-                </tr>
-                </tbody>
-            </table>
+<div layout:fragment="content">
+    <section class="my-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div th:switch="${users}">
+                        <h2 th:case="null">No users yet!</h2>
+                        <div th:case="*">
+                            <h2>Users</h2>
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="user : ${users}">
+                                    <td th:text="${user.name}"></td>
+                                    <td th:text="${user.email}"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p><a href="/create">Add a new user</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <p><a href="/login">Add a new user</a></p>
-    </div>
-
+    </section>
+</div>
 </body>
 </html>

@@ -1,5 +1,6 @@
 package app.securingweb;
 
+import app.constants.Roles;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -16,6 +17,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
 
                 .authorizeRequests()
+                .antMatchers("/create").permitAll()
                 .antMatchers("/css/**", "/js/**").permitAll();
 
     }

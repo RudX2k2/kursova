@@ -44,9 +44,16 @@ public class HomeController {
         return "login";
     }
 
+    @GetMapping("/create")
+    public String create(Model model)
+    {
+        User u = new User();
+        model.addAttribute("user", u);
+        return "create";
+    }
 
     @PostMapping("/create")
-    public String addUser(@Valid User user, BindingResult bindingResult, Model model) {
+    public String create(@Valid User user, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors())
         {
             return "create";
