@@ -13,7 +13,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception{
-        http.httpBasic().disable();
+        http
+
+                .authorizeRequests()
+                .antMatchers("/css/**", "/js/**").permitAll();
+
     }
     @Bean
     public PasswordEncoder encoder() {

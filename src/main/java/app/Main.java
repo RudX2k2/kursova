@@ -19,7 +19,7 @@ public class Main {
         return (args) -> {
             //storageService.deleteAll();
             try {
-                seederDb.SeedUsers();
+                seederDb.SeedAllTables();
             }
             catch(Exception ex) {
                 System.out.println("----propblem cteate folder--------");
