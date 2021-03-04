@@ -4,6 +4,7 @@ import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,8 +29,8 @@ public class User {
 
     @Column()
     @ColumnDefault("0")
-    @NotBlank(message = "Баланс обов'язковий")
-    private Double balance;
+    @NotNull(message = "Баланс обов'язковий")
+    private Double balance = 0.0;
 
     @ManyToMany(cascade=CascadeType.MERGE)
     @JoinTable(
