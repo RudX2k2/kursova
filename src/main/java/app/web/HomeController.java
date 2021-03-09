@@ -1,5 +1,6 @@
 package app.web;
 
+import app.constants.Roles;
 import app.entities.User;
 import app.repositories.RoleRepository;
 import app.repositories.UserRepository;
@@ -76,4 +77,33 @@ public class HomeController {
         model.addAttribute("user", user);
         return "edit";
     }
+    @PostMapping("/edit/{id}")
+    public String updateUser(@PathVariable("id") Long id, User user,
+                             BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            user.setId(id);
+            return "edit";
+        }
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        userRepository.save(user);
+        return "redirect:/";
+    }
+    @GetMapping("/delete/{id}")
+    public String deleteUser(@PathVariable("id") Long id, Model model)
+    {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+
+        if(user.getRoles().contains(Roles.Admin))
+        {
+            return "redirect:/";
+        }
+        else
+        {
+            userRepository.delete(user);
+            return "redirect:/";
+        }
+    }
+
+
 }

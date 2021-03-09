@@ -51,7 +51,7 @@ public class SeederDb {
             admin.setBalance(999999.999);
             admin.setEmail("admin@gmail.com");
             admin.setName("Jotaro");
-            admin.setPassword(passwordEncoder.encode("12345"));
+            admin.setPassword(passwordEncoder.encode("123456"));
             admin.setRoles(Arrays.asList(
                     roleRepository.findByName(Roles.Admin)));
 
