@@ -20,9 +20,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/", "/home").permitAll()
-                .antMatchers("/create").permitAll()
+                .antMatchers("/create").hasAuthority(Roles.Admin)
                 .antMatchers("/css/**", "/js/**").permitAll()
-                .antMatchers( "/delete/**", "/edit/**").permitAll()//hasAuthority(Roles.Admin)
+                .antMatchers( "/delete/**", "/edit/**").hasAuthority(Roles.Admin)
 
                 .anyRequest().authenticated()
                 .and()

@@ -1,5 +1,7 @@
 package app.entities;
 
+import org.springframework.security.core.GrantedAuthority;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
@@ -7,7 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "tblRoles")
-public class Role {
+public class Role{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -19,7 +21,7 @@ public class Role {
     @ManyToMany(mappedBy = "roles")
     private List<User> users;
 
-    public Role(){
+    public Role() {
         users = new ArrayList<User>();
     }
     /*users*/
@@ -40,7 +42,7 @@ public class Role {
         this.name = name;
     }
 
-    public List<User> getUsers(){
+    public List<User> getUsers() {
         return users;
     }
 
